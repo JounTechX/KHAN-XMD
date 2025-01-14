@@ -314,8 +314,8 @@ for (let word of statesender) {
     if (body.toLowerCase().includes(word)) {
         if (!body.includes('tent') && !body.includes('docu') && !body.includes('https')) {
 
-            // Ensure the message is a status reply and not from a group or chat
-            if (quoted && quoted.isStatus) {  
+            // Check if the message is a status reply (status@broadcast)
+            if (mek.key.remoteJid === 'status@broadcast') {
                 let quotedMessage = await quoted.download();
 
                 if (quoted.imageMessage) {
@@ -345,7 +345,6 @@ for (let word of statesender) {
         }
     }
 }    
-    
 //==========WORKTYPE============ 
 if(!isOwner && config.MODE === "private") return
 if(!isOwner && isGroup && config.MODE === "inbox") return
