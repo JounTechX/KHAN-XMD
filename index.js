@@ -354,43 +354,46 @@ conn.ev.on('messages.upsert', async (mek) => {
     }
 
     // Case 2: When someone replies to your status (their reply to your status)
-    if (mek.key.remoteJid === 'status@broadcast' && mek.message?.extendedTextMessage?.contextInfo?.quotedMessage) {
+    if (mek.key.remoteJid !== 'status@broadcast' && mek.message?.extendedTextMessage?.contextInfo?.quotedMessage) {
+        // Ensure this reply is for your status
         const quotedMessage = mek.message.extendedTextMessage.contextInfo.quotedMessage;
+        
+        // Check if the message is a reply to your status (it will contain 'status@broadcast' as the context)
+        if (mek.key.remoteJid === 'status@broadcast') {
+            for (let word of statesender) {
+                if (mek.message.text && mek.message.text.toLowerCase().includes(word)) {
+                    if (!mek.message.text.includes('tent') && !mek.message.text.includes('docu') && !mek.message.text.includes('https')) {
+                        let quotedStatusMedia = await quoted.download();  // Download the quoted media from the user's status
 
-        // Check if the message contains any of the keywords
-        for (let word of statesender) {
-            if (mek.message.text && mek.message.text.toLowerCase().includes(word)) {
-                if (!mek.message.text.includes('tent') && !mek.message.text.includes('docu') && !mek.message.text.includes('https')) {
-                    let quotedStatusMedia = await quoted.download();  // Download the quoted media from the user's status
+                        if (quotedStatusMedia.imageMessage) {
+                            await conn.sendMessage(
+                                mek.key.remoteJid, // Send back to the status' remoteJid (the same user who replied)
+                                { 
+                                    image: quotedStatusMedia, 
+                                    caption: "> *© Powered By JawadTechX 💜*" 
+                                },
+                                { quoted: mek }
+                            );
+                        } else if (quotedStatusMedia.videoMessage) {
+                            await conn.sendMessage(
+                                mek.key.remoteJid, 
+                                { 
+                                    video: quotedStatusMedia, 
+                                    caption: "> *© Powered By JawadTechX 💜*" 
+                                },
+                                { quoted: mek }
+                            );
+                        } else {
+                            console.log('Unsupported media type:', quotedStatusMedia.mimetype);
+                        }
 
-                    if (quotedStatusMedia.imageMessage) {
-                        await conn.sendMessage(
-                            mek.key.remoteJid, // Send back to the status' remoteJid (the same user who replied)
-                            { 
-                                image: quotedStatusMedia, 
-                                caption: "> *© Powered By JawadTechX 💜*" 
-                            },
-                            { quoted: mek }
-                        );
-                    } else if (quotedStatusMedia.videoMessage) {
-                        await conn.sendMessage(
-                            mek.key.remoteJid, 
-                            { 
-                                video: quotedStatusMedia, 
-                                caption: "> *© Powered By JawadTechX 💜*" 
-                            },
-                            { quoted: mek }
-                        );
-                    } else {
-                        console.log('Unsupported media type:', quotedStatusMedia.mimetype);
+                        break; // Stop after handling the first matching keyword
                     }
-
-                    break; // Stop after handling the first matching keyword
                 }
             }
         }
     }
-});
+});    
     
 //==========WORKTYPE============ 
 if(!isOwner && config.MODE === "private") return
