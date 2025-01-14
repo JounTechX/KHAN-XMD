@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 const config = require('../config');    
 const { cmd } = require('../command');
 
-
 cmd({
     pattern: "repo",
     alias: ["sc", "script", "info"],
@@ -30,10 +29,7 @@ async (conn, mek, m, { from, reply }) => {
         // Format the repository information
         const formattedInfo = `*BOT NAME:*\n> ${repoData.name}\n\n*OWNER NAME:*\n> ${repoData.owner.login}\n\n*STARS:*\n> ${repoData.stargazers_count}\n\n*FORKS:*\n> ${repoData.forks_count}\n\n*GITHUB LINK:*\n> ${repoData.html_url}\n\n*DESCRIPTION:*\n> ${repoData.description || 'No description'}\n\n*Don't Forget To Star and Fork Repository*\n\n> *© Powered By JawadTechX 🖤*`;
 
-        // Send the formatted text
-        await conn.sendMessage(from, { text: formattedInfo }, { quoted: m });
-
-        // Send an image with the same information
+        // Send an image with the formatted info as a caption and context info
         await conn.sendMessage(from, {
             image: { url: `https://files.catbox.moe/juroe8.jpg` },
             caption: formattedInfo,
@@ -49,7 +45,7 @@ async (conn, mek, m, { from, reply }) => {
             }
         }, { quoted: mek });
 
-        // Send an audio file with the same context
+        // Send the audio file with context info
         await conn.sendMessage(from, {
             audio: { url: 'https://github.com/JawadYTX/KHAN-DATA/raw/refs/heads/main/autovoice/repo.m4a' },
             mimetype: 'audio/mp4',
