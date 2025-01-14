@@ -1,12 +1,12 @@
 {
-  "name": "KHAN-AI",
+  "name": "KHAN-MD",
   "version": "3.0.0",
   "description": "A WhatsApp Bot Created By JawadTechX",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name KHANX-AI",
-    "stop": "pm2 stop KHANX-AI",
-    "restart": "pm2 restart KHANX-AI"
+    "start": "pm2 start index.js --deep-monitoring --attach --name KHAN-XMD",
+    "stop": "pm2 stop KHAN-XMD",
+    "restart": "pm2 restart KHAN-XMD"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "6.6.0",

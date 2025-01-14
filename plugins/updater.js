@@ -12,7 +12,7 @@ cmd({
     filename: __filename
 }, async (conn, mek, m, { from, reply }) => {
     try {
-        const repoUrl = 'https://github.com/JawadYTX/KHAN-AI.git'; 
+        const repoUrl = 'https://github.com/JawadYTX/KHAN-XMD.git'; 
         const targetFolder = 'plugins';
 
         

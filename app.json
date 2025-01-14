@@ -1,8 +1,8 @@
 {
-  "name": "KHAN-AI",
+  "name": "KHAN-MD",
   "description": "Javascript WhatsApp bot made by Jᴀᴡᴀᴅ TᴇᴄʜX",
   "logo": "https://raw.githubusercontent.com/JawadYTX/KHAN-DATA/refs/heads/main/logo/KHAN.png",
-  "keywords": ["khan-ai"],
+  "keywords": ["KHAN-MD"],
   "success_url": "/",
 
     "stack": "container",
@@ -16,7 +16,7 @@
     "STICKER_NAME": {
       "description": "type your sticker pack name.",
       "required": false,
-      "value": "KHAN-AI"
+      "value": "KHAN-MD"
     }, 
       
     "PREFIX": {
@@ -73,7 +73,7 @@
     "AUTO_STATUS_MSG": {
       "description": "Type custom message on status reply",
       "required": true,
-      "value": "*SEEN YOUR STATUS BY KHAN-AI 🖤*"
+      "value": "*SEEN YOUR STATUS BY KHAN-MD 🖤*"
    
      }, 
     
@@ -93,7 +93,7 @@
     "BOT_NAME": {
       "description": "Type here the bot name.",
       "required": false,
-      "value": "KHAN-AI"
+      "value": "KHAN-MD"
 
       }, 
 

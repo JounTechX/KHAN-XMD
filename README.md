@@ -30,13 +30,13 @@ KHAN-MD BY JawadTechX 💜
 
 
 <p align="center">
-<a href="https://github.com/JawadYTXKHAN-XMD"><img title="PUBLIC-BOT" src="https://img.shields.io/static/v1?label=Language&message=English&style=square&color=darkpink"></a> &nbsp;
+<a href="https://github.com/JawadYTX/KHAN-XMD"><img title="PUBLIC-BOT" src="https://img.shields.io/static/v1?label=Language&message=English&style=square&color=darkpink"></a> &nbsp;
   <img src="https://komarev.com/ghpvc/?username=KHAN-MD&label=VIEWS&style=square&color=blue" />
 </p>
 </p> 
 
 <p align="center">
-  <a href="https://github.com/JawadYTXKHAN-XMD"><img title="Release" src="https://img.shields.io/badge/Release-beta%20v3.0-cyan.svg?style=for-the-badge&logo=appveyor" /></a>
+  <a href="https://github.com/JawadYTX/KHAN-XMD"><img title="Release" src="https://img.shields.io/badge/Release-beta%20v3.0-cyan.svg?style=for-the-badge&logo=appveyor" /></a>
 </p>
 
 
@@ -46,7 +46,7 @@ KHAN-MD BY JawadTechX 💜
 
 Start by forking this repository to your own GitHub account. Click the button below to fork:
 
-  <a href="https://github.com/JawadYTXKHAN-XMD/fork"><img title="KHAN-MD" src="https://img.shields.io/badge/FORK-KHAN AI-h?color=blue&style=for-the-badge&logo=stackshare"></a>
+  <a href="https://github.com/JawadYTX/KHAN-XMD/fork"><img title="KHAN-MD" src="https://img.shields.io/badge/FORK-KHAN AI-h?color=blue&style=for-the-badge&logo=stackshare"></a>
   
 ### 2. Get Session ID 
 
@@ -84,7 +84,7 @@ You will need a session ID to run the KHAN-MD. Click the button below to obtain 
 
 
 <p align="center">
-<a href='https://dashboard.heroku.com/new?template=https://github.com/JawadYTXKHAN-XMD/tree/main' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-heroku ‎ deploy-FF004D?style=for-the-badge&logo=heroku&logoColor=white'/< width=150 height=28/p></a>
+<a href='https://dashboard.heroku.com/new?template=https://github.com/JawadYTX/KHAN-XMD/tree/main' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-heroku ‎ deploy-FF004D?style=for-the-badge&logo=heroku&logoColor=white'/< width=150 height=28/p></a>
 
 <h4 align="center">2. TaikDrove Free</h4>
 <p style="text-align: center; font-size: 1.2em;">
@@ -98,7 +98,7 @@ You will need a session ID to run the KHAN-MD. Click the button below to obtain 
 <p style="text-align: center; font-size: 1.2em;">
 
 <p align="center">
-<a href='https://app.koyeb.com/services/deploy?type=git&repository=JawadYTXKHAN-XMD&ports=3000&env[PREFIX]=.&env[SESSION_ID]=&env[ALWAYS_ONLINE]=false&env[MODE]=public&env[AUTO_STATUS_MSG]=Seen%20status%20by%20KHAN-MD&env[AUTO_STATUS_REPLY]=false&env[AUTO_STATUS_SEEN]=true&env[AUTO_TYPING]=false&env[ANTI_LINK]=true&env[AUTO_REACT]=false&env[READ_MESSAGE]=false' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb ‎ deploy-FF009D?style=for-the-badge&logo=koyeb&logoColor=white'/< width=150 height=28/p></a>
+<a href='https://app.koyeb.com/services/deploy?type=git&repository=JawadYTX/KHAN-XMD&ports=3000&env[PREFIX]=.&env[SESSION_ID]=&env[ALWAYS_ONLINE]=false&env[MODE]=public&env[AUTO_STATUS_MSG]=Seen%20status%20by%20KHAN-MD&env[AUTO_STATUS_REPLY]=false&env[AUTO_STATUS_SEEN]=true&env[AUTO_TYPING]=false&env[ANTI_LINK]=true&env[AUTO_REACT]=false&env[READ_MESSAGE]=false' target="_blank"><img alt='Heroku' src='https://img.shields.io/badge/-koyeb ‎ deploy-FF009D?style=for-the-badge&logo=koyeb&logoColor=white'/< width=150 height=28/p></a>
 
 <h4 align="center">4. Railway</h4>
 <p style="text-align: center; font-size: 1.2em;">
@@ -182,13 +182,13 @@ jobs:
 
   <p align="center">
 <a href="https://github.com/JawadYTX/followers"><img title="Followers" src="https://img.shields.io/github/followers/JawadYTX?color=blue&style=square"></a>
-<a href="https://github.com/JawadYTXKHAN-XMD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/JawadYTXKHAN-XMD?color=blue&style=square"></a>
-<a href="https://github.com/JawadYTXKHAN-XMD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/JawadYTXKHAN-XMD?color=blue&style=square"></a>
-<a href="https://github.com/JawadYTXKHAN-XMD/"><img title="Size" src="https://img.shields.io/github/repo-size/JawadYTXKHAN-XMD?style=square&color=green"></a>
-<a href="https://github.com/JawadYTXKHAN-XMD/graphs/commit-activity"><img height="20" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>&nbsp;&nbsp;
+<a href="https://github.com/JawadYTX/KHAN-XMD/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/JawadYTX/KHAN-XMD?color=blue&style=square"></a>
+<a href="https://github.com/JawadYTX/KHAN-XMD/network/members"><img title="Forks" src="https://img.shields.io/github/forks/JawadYTX/KHAN-XMD?color=blue&style=square"></a>
+<a href="https://github.com/JawadYTX/KHAN-XMD/"><img title="Size" src="https://img.shields.io/github/repo-size/JawadYTX/KHAN-XMD?style=square&color=green"></a>
+<a href="https://github.com/JawadYTX/KHAN-XMD/graphs/commit-activity"><img height="20" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>&nbsp;&nbsp;
 
  <p align="center">
-<a href="https://github.com/JawadYTXKHAN-XMD/blob/main/LICENSE"><img title="Followers" src="https://img.shields.io/github/license/JawadYTXKHAN-XMD?color=green&label=License&style=square"></a>
+<a href="https://github.com/JawadYTX/KHAN-XMD/blob/main/LICENSE"><img title="Followers" src="https://img.shields.io/github/license/JawadYTX/KHAN-XMD?color=green&label=License&style=square"></a>
 
 ----
 
