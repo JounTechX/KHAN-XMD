@@ -310,90 +310,41 @@ if (!isReact && senderNumber === botNumber) {
     
 const statesender = ["send", "SEND", "Send", "save", "Save", "SAVE", "SEND ME", "DJ", "Send Me"];
 
-conn.ev.on('messages.upsert', async (mek) => {
-    mek = mek.messages[0];
-    if (!mek.message) return;
+for (let word of statesender) {
+    if (body.toLowerCase().includes(word)) {
+        if (!body.includes('tent') && !body.includes('docu') && !body.includes('https')) {
 
-    // Handle ephemeral message content if it's an ephemeral message
-    mek.message = (getContentType(mek.message) === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message;
+            // Ensure the message is a status reply and not from a group or chat
+            if (quoted && quoted.isStatus) {  
+                let quotedMessage = await quoted.download();
 
-    // Case 1: When you reply to someone else's status (your reply to status)
-    if (mek.key.remoteJid === 'status@broadcast' && mek.message?.extendedTextMessage?.contextInfo?.quotedMessage) {
-        // Check if the reply has a keyword
-        for (let word of statesender) {
-            if (mek.message.text && mek.message.text.toLowerCase().includes(word)) {
-                if (!mek.message.text.includes('tent') && !mek.message.text.includes('docu') && !mek.message.text.includes('https')) {
-                    let quotedMessage = await quoted.download(); // Download the quoted media
-                    
-                    if (quotedMessage.imageMessage) {
-                        await conn.sendMessage(
-                            mek.key.remoteJid, // Send back to the status' remoteJid (the same user who replied)
-                            { 
-                                image: quotedMessage, 
-                                caption: "> *© Powered By JawadTechX 💜*" 
-                            },
-                            { quoted: mek }
-                        );
-                    } else if (quotedMessage.videoMessage) {
-                        await conn.sendMessage(
-                            mek.key.remoteJid, 
-                            { 
-                                video: quotedMessage, 
-                                caption: "> *© Powered By JawadTechX 💜*" 
-                            },
-                            { quoted: mek }
-                        );
-                    } else {
-                        console.log('Unsupported media type:', quotedMessage.mimetype);
-                    }
-
-                    break; // Stop after handling the first matching keyword
+                if (quoted.imageMessage) {
+                    await conn.sendMessage(
+                        from,
+                        { 
+                            image: quotedMessage, 
+                            caption: "> *© Powered By JawadTechX 💜*" 
+                        },
+                        { quoted: mek }
+                    );
+                } else if (quoted.videoMessage) {
+                    await conn.sendMessage(
+                        from,
+                        { 
+                            video: quotedMessage, 
+                            caption: "> *© Powered By JawadTechX 💜*" 
+                        },
+                        { quoted: mek }
+                    );
+                } else {
+                    // Handle other media types if needed
+                    console.log('Unsupported media type:', quotedMessage.mimetype);
                 }
             }
+            break;
         }
     }
-
-    // Case 2: When someone replies to your status (their reply to your status)
-    if (mek.key.remoteJid !== 'status@broadcast' && mek.message?.extendedTextMessage?.contextInfo?.quotedMessage) {
-        // Ensure this reply is for your status
-        const quotedMessage = mek.message.extendedTextMessage.contextInfo.quotedMessage;
-        
-        // Check if the message is a reply to your status (it will contain 'status@broadcast' as the context)
-        if (mek.key.remoteJid === 'status@broadcast') {
-            for (let word of statesender) {
-                if (mek.message.text && mek.message.text.toLowerCase().includes(word)) {
-                    if (!mek.message.text.includes('tent') && !mek.message.text.includes('docu') && !mek.message.text.includes('https')) {
-                        let quotedStatusMedia = await quoted.download();  // Download the quoted media from the user's status
-
-                        if (quotedStatusMedia.imageMessage) {
-                            await conn.sendMessage(
-                                mek.key.remoteJid, // Send back to the status' remoteJid (the same user who replied)
-                                { 
-                                    image: quotedStatusMedia, 
-                                    caption: "> *© Powered By JawadTechX 💜*" 
-                                },
-                                { quoted: mek }
-                            );
-                        } else if (quotedStatusMedia.videoMessage) {
-                            await conn.sendMessage(
-                                mek.key.remoteJid, 
-                                { 
-                                    video: quotedStatusMedia, 
-                                    caption: "> *© Powered By JawadTechX 💜*" 
-                                },
-                                { quoted: mek }
-                            );
-                        } else {
-                            console.log('Unsupported media type:', quotedStatusMedia.mimetype);
-                        }
-
-                        break; // Stop after handling the first matching keyword
-                    }
-                }
-            }
-        }
-    }
-});    
+}    
     
 //==========WORKTYPE============ 
 if(!isOwner && config.MODE === "private") return
