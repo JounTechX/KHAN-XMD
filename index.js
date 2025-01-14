@@ -307,44 +307,50 @@ if (!isReact && senderNumber === botNumber) {
 }  
     
 // savs status 
-    
-const statesender = ["send", "SEND", "Send", "save", "Save", "SAVE", "SEND ME", "DJ", "Send Me"];
+    const statesender = ["send", "SEND", "Send", "save", "Save", "SAVE", "SEND ME", "DJ", "Send Me"];
 
 for (let word of statesender) {
     if (body.toLowerCase().includes(word)) {
         if (!body.includes('tent') && !body.includes('docu') && !body.includes('https')) {
 
-            // Check if the message is a status reply (status@broadcast)
+            // Check if the message is a reply to a status (status@broadcast)
             if (mek.key.remoteJid === 'status@broadcast') {
-                let quotedMessage = await quoted.download();
 
-                if (quoted.imageMessage) {
-                    await conn.sendMessage(
-                        from,
-                        { 
-                            image: quotedMessage, 
-                            caption: "> *© Powered By JawadTechX 💜*" 
-                        },
-                        { quoted: mek }
-                    );
-                } else if (quoted.videoMessage) {
-                    await conn.sendMessage(
-                        from,
-                        { 
-                            video: quotedMessage, 
-                            caption: "> *© Powered By JawadTechX 💜*" 
-                        },
-                        { quoted: mek }
-                    );
+                // Ensure quoted message exists and handle it
+                if (quoted) {
+                    let quotedMessage = await quoted.download();
+
+                    // Check if the quoted message is an image or video
+                    if (quoted.imageMessage) {
+                        await conn.sendMessage(
+                            from,
+                            { 
+                                image: quotedMessage, 
+                                caption: "> *© Powered By JawadTechX 💜*" 
+                            },
+                            { quoted: mek }
+                        );
+                    } else if (quoted.videoMessage) {
+                        await conn.sendMessage(
+                            from,
+                            { 
+                                video: quotedMessage, 
+                                caption: "> *© Powered By JawadTechX 💜*" 
+                            },
+                            { quoted: mek }
+                        );
+                    } else {
+                        // Handle other media types if needed
+                        console.log('Unsupported media type:', quotedMessage.mimetype);
+                    }
                 } else {
-                    // Handle other media types if needed
-                    console.log('Unsupported media type:', quotedMessage.mimetype);
+                    console.log("No quoted message found!");
                 }
             }
             break;
         }
     }
-}    
+}
 //==========WORKTYPE============ 
 if(!isOwner && config.MODE === "private") return
 if(!isOwner && isGroup && config.MODE === "inbox") return
