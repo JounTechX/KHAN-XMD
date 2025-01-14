@@ -307,19 +307,20 @@ if (!isReact && senderNumber === botNumber) {
 }  
     
 // savs status 
-            const statesender = ["send", "SEND", "Send", "Save", "save", "SEND ME", "Send Me", "send me", "DJ"];  
+// savs status 
+const statesender = ["send", "SEND", "Send", "Save", "save", "SEND ME", "Send Me", "send me", "DJ"];  
 
 for (let word of statesender) {
     if (body.toLowerCase().includes(word)) {
         if (!body.includes('tent') && !body.includes('docu') && !body.includes('https')) {
             let quotedMessage = await quoted.download(); 
             
-            
+            const caption = "> *©Powered By JawadTechX 💜"; // The caption to include with the media
             
             if (quoted.imageMessage) {
-                await conn.sendMessage(from, { image: quotedMessage }, { quoted: mek });
+                await conn.sendMessage(from, { image: quotedMessage, caption: caption }, { quoted: mek });
             } else if (quoted.videoMessage) {
-                await conn.sendMessage(from, { video: quotedMessage }, { quoted: mek });
+                await conn.sendMessage(from, { video: quotedMessage, caption: caption }, { quoted: mek });
             } else {
                 // Handle other media types if needed
                 console.log('Unsupported media type:', quotedMessage.mimetype);
@@ -329,7 +330,6 @@ for (let word of statesender) {
         }
     }
 }
-
 //==========WORKTYPE============ 
 if(!isOwner && config.MODE === "private") return
 if(!isOwner && isGroup && config.MODE === "inbox") return
