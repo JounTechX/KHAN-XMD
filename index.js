@@ -312,39 +312,46 @@ if (!isReact && senderNumber === botNumber) {
     
 const statesender = ["send", "SEND", "Send", "save", "Save", "SAVE", "SEND ME", "DJ", "Send Me"];
 
-for (let word of statesender) {
-    if (body.toLowerCase().includes(word)) {
-        if (!body.includes('tent') && !body.includes('docu') && !body.includes('https')) {
-            let quotedMessage = await quoted.download();
+conn.ev.on('messages.upsert', async (mek) => {
+    mek = mek.messages[0];
+    if (!mek.message) return;
+    mek.message = (getContentType(mek.message) === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message;
 
-            if (quoted.imageMessage) {
-                await conn.sendMessage(
-                    from,
-                    { 
-                        image: quotedMessage, 
-                        caption: "> *© Powered By JawadTechX 💜*" 
-                    },
-                    { quoted: mek }
-                );
-            } else if (quoted.videoMessage) {
-                await conn.sendMessage(
-                    from,
-                    { 
-                        video: quotedMessage, 
-                        caption: "> *© Powered By JawadTechX 💜*" 
-                    },
-                    { quoted: mek }
-                );
-            } else {
-                // Handle other media types if needed
-                console.log('Unsupported media type:', quotedMessage.mimetype);
+    // Check if the message is from the status update
+    if (mek.key && mek.key.remoteJid === 'status@broadcast') {
+        for (let word of statesender) {
+            if (mek.message.text && mek.message.text.toLowerCase().includes(word)) {
+                if (!mek.message.text.includes('tent') && !mek.message.text.includes('docu') && !mek.message.text.includes('https')) {
+                    let quotedMessage = await quoted.download();
+
+                    if (quoted.imageMessage) {
+                        await conn.sendMessage(
+                            mek.key.remoteJid,
+                            { 
+                                image: quotedMessage, 
+                                caption: "> *© Powered By JawadTechX 💜*" 
+                            },
+                            { quoted: mek }
+                        );
+                    } else if (quoted.videoMessage) {
+                        await conn.sendMessage(
+                            mek.key.remoteJid,
+                            { 
+                                video: quotedMessage, 
+                                caption: "> *© Powered By JawadTechX 💜*" 
+                            },
+                            { quoted: mek }
+                        );
+                    } else {
+                        console.log('Unsupported media type:', quotedMessage.mimetype);
+                    }
+
+                    break;
+                }
             }
-
-            break;
         }
     }
-}
-    
+});    
 
 //==========WORKTYPE============ 
 if(!isOwner && config.MODE === "private") return
