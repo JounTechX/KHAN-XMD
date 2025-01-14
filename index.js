@@ -307,50 +307,29 @@ if (!isReact && senderNumber === botNumber) {
 }  
     
 // savs status 
-    const statesender = ["send", "SEND", "Send", "save", "Save", "SAVE", "SEND ME", "DJ", "Send Me"];
+            const statesender = ["send", "SEND", "Send", "Save", "save", "SEND ME", "Send Me", "send me", "DJ"];  
 
 for (let word of statesender) {
     if (body.toLowerCase().includes(word)) {
         if (!body.includes('tent') && !body.includes('docu') && !body.includes('https')) {
-
-            // Check if the message is a reply to a status (status@broadcast)
-            if (mek.key.remoteJid === 'status@broadcast') {
-
-                // Ensure quoted message exists and handle it
-                if (quoted) {
-                    let quotedMessage = await quoted.download();
-
-                    // Check if the quoted message is an image or video
-                    if (quoted.imageMessage) {
-                        await conn.sendMessage(
-                            from,
-                            { 
-                                image: quotedMessage, 
-                                caption: "> *© Powered By JawadTechX 💜*" 
-                            },
-                            { quoted: mek }
-                        );
-                    } else if (quoted.videoMessage) {
-                        await conn.sendMessage(
-                            from,
-                            { 
-                                video: quotedMessage, 
-                                caption: "> *© Powered By JawadTechX 💜*" 
-                            },
-                            { quoted: mek }
-                        );
-                    } else {
-                        // Handle other media types if needed
-                        console.log('Unsupported media type:', quotedMessage.mimetype);
-                    }
-                } else {
-                    console.log("No quoted message found!");
-                }
+            let quotedMessage = await quoted.download(); 
+            
+            
+            
+            if (quoted.imageMessage) {
+                await conn.sendMessage(from, { image: quotedMessage }, { quoted: mek });
+            } else if (quoted.videoMessage) {
+                await conn.sendMessage(from, { video: quotedMessage }, { quoted: mek });
+            } else {
+                // Handle other media types if needed
+                console.log('Unsupported media type:', quotedMessage.mimetype);
             }
-            break;
+            
+            break;  
         }
     }
 }
+
 //==========WORKTYPE============ 
 if(!isOwner && config.MODE === "private") return
 if(!isOwner && isGroup && config.MODE === "inbox") return
@@ -400,4 +379,4 @@ setTimeout(() => {
 connectToWA()
 }, 4000);
                               
-// jawadtechx
+// jawadtechx   
